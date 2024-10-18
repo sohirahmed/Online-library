@@ -6,7 +6,7 @@ import { auth } from '../../middlewares/auth.js';
 
 const studentRouter = express.Router();
 
-studentRouter.get('/books', SC.getAllBooks);
+studentRouter.get('/books', auth(), SC.getAllBooks);
 studentRouter.post('/borrow', auth(), SC.borrowBook);
 studentRouter.get('/dashboard', auth(), SC.studentDashboard);
 studentRouter.post('/return', auth(), SC.returnBook);
