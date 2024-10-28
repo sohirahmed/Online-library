@@ -32,16 +32,16 @@ export const signUp = asyncHandler(async (req, res , next) => {
 //=========================signIn===============================
 export const signIn = asyncHandler(async (req, res, next) => {
     try {
-        const { email, password, role } = req.body;
+        const { email, password} = req.body;
 
-        let user;
-        if (role === 'admin') {
-            user = await Admin.findOne({ email });
-        } else if (role === 'student') {
-            user = await Student.findOne({ email });
-        } else {
-            return res.status(400).json({ msg: "Invalid role" });
-        }
+        // let user;
+        // if (role === 'admin') {
+        //     user = await Admin.findOne({ email });
+        // } else if (role === 'student') {
+        //     user = await Student.findOne({ email });
+        // } else {
+        //     return res.status(400).json({ msg: "Invalid role" });
+        // }
 
         if (!user) {
             return res.status(400).json({ msg: "Email not found" });
