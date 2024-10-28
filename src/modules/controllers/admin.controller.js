@@ -5,6 +5,21 @@ import Student from "../../../db/models/student.model.js";
 import { asyncHandler } from "../../utils/globalErrorHandling.js";
 
 
+
+//========================== getAllStudents============================================
+export const getAllStudents = async (req, res , next) => {
+    try {    
+        if (req.user.role !== 'admin') {
+        return res.status(403).json({ msg: 'Access denied. Admins only.' });
+    }
+    const students = await Student.find({});
+    res.status(200).json({ msg: 'All students fetched successfully', students });
+    } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: 'Error fetching students', error });
+    }
+};
+
 //========================== Dashboard Operations ==========================
 export const dashboard = asyncHandler(async (req, res,next) => {
     try {

@@ -4,6 +4,7 @@ import { auth } from '../../middlewares/auth.js';
 const adminRouter = express.Router();
 
 
+adminRouter.get('/students', auth(),AC.getAllStudents);
 adminRouter.get('/dashboard', auth(), AC.dashboard);
 adminRouter.post('/books', auth(), AC.addBook);
 adminRouter.put('/books/:bookId', auth(), AC.updateBook);
