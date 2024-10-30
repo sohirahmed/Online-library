@@ -22,7 +22,6 @@ export const getAllStudents = async (req, res , next) => {
 
 //========================== Dashboard Operations ==========================
 export const dashboard = asyncHandler(async (req, res,next) => {
-    console.log("Request received at /admin/dashboard")
     try {
         const borrowedBooks = await BorrowedBook.find().populate('bookId studentId');
         const allBooks = await Book.find();
