@@ -47,7 +47,7 @@ export const signIn = asyncHandler(async (req, res, next) => {
         }
 
         const token = jwt.sign({ id: user._id, email: user.email }, process.env.signatureKey, { expiresIn: '2w' });
-        res.status(200).json({ msg: "Login successful", token });
+        res.status(200).json({ msg: "Login successful", token , role: user.role});
 
     } catch (error) {
         console.error(error);
